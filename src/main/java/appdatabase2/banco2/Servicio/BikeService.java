@@ -51,6 +51,9 @@ public class BikeService {
                 if (bike.getDescription() != null) {
                     q.get().setDescription(bike.getDescription());
                 }
+                if(bike.getCategory()!=null){
+                    q.get().setCategory(bike.getCategory());
+                }
                 bikeRepository.save(q.get());
                 return q.get();
             } else {
