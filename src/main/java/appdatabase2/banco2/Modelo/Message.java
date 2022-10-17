@@ -20,6 +20,7 @@ public class Message implements Serializable {
     @JsonIgnoreProperties({"messages", "reservations"})
     private Bike bike;
 
+
     @ManyToOne
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"messages", "reservations"})

@@ -16,7 +16,7 @@ public class ScoreService {
     private ScoreRepository scoreRepository;
 
     public List<Score> getAll(){
-        return (List<Score>) scoreRepository.getAll();
+        return  scoreRepository.getAll();
     }
     public Optional<Score> getScore(int id){
         return scoreRepository.getScore(id);

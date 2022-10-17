@@ -26,14 +26,12 @@ public class Bike implements Serializable {
     @JsonIgnoreProperties("bikes")
     private Category category;
 
-
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "bike")
-    @JsonIgnoreProperties({"bike", "messages"})
-    public List<Reservation> reservations;
-
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "bike")
     @JsonIgnoreProperties({"bike", "client"})
     public List<Message> messages;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "bike")
+    @JsonIgnoreProperties({"bike", "messages"})
+    public List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -73,5 +71,29 @@ public class Bike implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

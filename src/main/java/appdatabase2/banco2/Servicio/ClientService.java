@@ -16,7 +16,7 @@ public class ClientService {
     private ClientRepository clientRepository;
 
     public List<Client> getAll(){
-        return (List<Client>) clientRepository.getAll();
+        return clientRepository.getAll();
     }
     public Optional<Client> getClient(int id){
         return clientRepository.getClient(id);

@@ -18,7 +18,7 @@ public class BikeService {
     private BikeRepository bikeRepository;
 
     public List<Bike> getAll(){
-        return (List<Bike>) bikeRepository.getAll();
+        return bikeRepository.getAll();
     }
     public Optional<Bike> getBike(int id){
         return bikeRepository.getBike(id);

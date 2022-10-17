@@ -16,7 +16,7 @@ public class ReservationService {
     private ReservationRepository reservationRepository;
 
     public List<Reservation> getAll(){
-        return (List<Reservation>) reservationRepository.getAll();
+        return  reservationRepository.getAll();
     }
     public Optional<Reservation> getReservation(int id){
         return reservationRepository.getReservation(id);
@@ -45,14 +45,14 @@ public class ReservationService {
                 if (reservation.getDevolutionDate()!= null) {
                     q.get().setDevolutionDate(reservation.getDevolutionDate());
                 }
-                if (reservation.getScore() != null) {
-                    q.get().setScore(reservation.getScore());
-                }
                 if (reservation.getBike() != null) {
                     q.get().setBike(reservation.getBike());
                 }
                 if (reservation.getClient() != null) {
                     q.get().setClient(reservation.getClient());
+                }
+                if (reservation.getScore() != null) {
+                        q.get().setScore(reservation.getScore());
                 }
                 reservationRepository.save(q.get());
                 return q.get();

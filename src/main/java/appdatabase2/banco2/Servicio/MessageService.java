@@ -16,7 +16,7 @@ public class MessageService {
     private MessageRepository messageRepository;
 
     public List<Message> getAll(){
-        return (List<Message>) messageRepository.getAll();
+        return  messageRepository.getAll();
     }
     public Optional<Message> getMessage(int id){
         return messageRepository.getMessage(id);
@@ -44,6 +44,7 @@ public class MessageService {
                 }
                 if (message.getBike() != null) {
                     q.get().setBike(message.getBike());
+
                 }
                 if (message.getClient() != null) {
                     q.get().setClient(message.getClient());

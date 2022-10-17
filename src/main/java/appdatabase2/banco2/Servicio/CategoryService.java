@@ -17,12 +17,11 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
     public List<Category> getAll(){
-        return (List<Category>) categoryRepository.getAll();
+        return  categoryRepository.getAll();
     }
     public Optional<Category> getCategory(int id){
         return categoryRepository.getCategory(id);
     }
-
     public Category save(Category category) {
         if (category.getId() == null) {
             return categoryRepository.save(category);
@@ -58,7 +57,7 @@ public class CategoryService {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Category> p = categoryRepository.getCategory(id);
+        Optional<Category> p= categoryRepository.getCategory(id);
         if(p.isPresent()){
             categoryRepository.delete(p.get());
             flag = true;
