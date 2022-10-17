@@ -3,8 +3,11 @@ package appdatabase2.banco2.Modelo;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -17,6 +20,20 @@ public class Bike implements Serializable {
     private String brand;
     private Integer year; //int number of 4 digits
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
+    @JsonIgnoreProperties("bikes")
+    private Category category;
+
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "bike")
+    @JsonIgnoreProperties({"bike", "messages"})
+    public List<Reservation> reservations;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "bike")
+    @JsonIgnoreProperties({"bike", "client"})
+    public List<Message> messages;
 
     public Integer getId() {
         return id;

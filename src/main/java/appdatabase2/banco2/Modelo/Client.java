@@ -3,8 +3,11 @@ package appdatabase2.banco2.Modelo;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -17,6 +20,14 @@ public class Client implements Serializable {
     private String email;
     private String password;
     private Integer age;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @JsonIgnoreProperties("client")
+    public List<Reservation> reservations;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @JsonIgnoreProperties("client")
+    public List<Message> messages;
 
     public Integer getIdClient() {
         return idClient;
